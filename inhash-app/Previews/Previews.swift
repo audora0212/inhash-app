@@ -6,46 +6,40 @@ import SwiftUI
     let auth = AuthStore()
     return LoginView()
         .environmentObject(auth)
-        .previewDisplayName("LoginView")
         .preferredColorScheme(.light)
 }
 
-#Preview("SignupView") {
-    let auth = AuthStore()
-    return SignupView()
-        .environmentObject(auth)
-        .previewDisplayName("SignupView")
-        .preferredColorScheme(.light)
-}
+// SignupView는 로그인 탭 내부로 통합되어 제거되었습니다.
 
 #Preview("LmsLinkView") {
     let auth = AuthStore()
     auth.isAuthenticated = true // 콘텐츠 플로우 무시하고 화면 구성만 미리보기
     return LmsLinkView()
         .environmentObject(auth)
-        .previewDisplayName("LmsLinkView")
+}
+
+#Preview("DataLoadingView") {
+    let auth = AuthStore()
+    return DataLoadingView(username: "20190000", password: "password")
+        .environmentObject(auth)
 }
 
 #Preview("HomeView") {
     let store = ScheduleStore()
     return HomeView()
         .environmentObject(store)
-        .previewDisplayName("HomeView")
 }
 
 #Preview("CalendarView") {
     let store = ScheduleStore()
     return CalendarView()
         .environmentObject(store)
-        .previewDisplayName("CalendarView")
 }
 
 #Preview("SummaryView") {
     SummaryView()
-        .previewDisplayName("SummaryView")
 }
 
 #Preview("SettingsView") {
     SettingsView()
-        .previewDisplayName("SettingsView")
 }
